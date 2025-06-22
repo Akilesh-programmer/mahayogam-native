@@ -28,7 +28,7 @@
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     },
     "extra": {
       "API_BASE_URL": "https://akilesh-home-server.tailb6b6c7.ts.net/mahayogam-backend",
