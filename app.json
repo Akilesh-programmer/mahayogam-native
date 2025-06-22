@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Mahayogam",
+    "slug": "mahayogam-native",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/favicon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "mahayogamios",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.mahayogam.attendance",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "API_BASE_URL": "https://akilesh-home-server.tailb6b6c7.ts.net/mahayogam-backend",
+      "eas": {
+        "projectId": "11069874-a50b-45ec-b920-d32a9f3f3f43"
+      }
+    },
+    "plugins": [
+      "expo-font",
+      "expo-asset",
+      "expo-document-picker",
+      "expo-file-system"
+    ]
+  }
+}
