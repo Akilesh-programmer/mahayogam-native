@@ -34,6 +34,7 @@ const BatchAttendanceSummary = () => {
   const dateColumnWidth = wp(22);
   const stickyColWidth = wp(36);
   const screenWidth = wp(100);
+  const [rowHeights, setRowHeights] = useState([]);
 
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -147,7 +148,7 @@ const BatchAttendanceSummary = () => {
                   style={[
                     styles.tableRow,
                     index % 2 === 0 ? styles.tableRowEven : styles.tableRowOdd,
-                    { minWidth: wp(36) },
+                    { minWidth: wp(36), height: rowHeights[index] },
                   ]}
                 >
                   <Text
@@ -157,6 +158,14 @@ const BatchAttendanceSummary = () => {
                       styles.stickyBodyCell,
                     ]}
                     numberOfLines={2}
+                    onLayout={(event) => {
+                      const { height } = event.nativeEvent.layout;
+                      setRowHeights((prev) => {
+                        const newHeights = [...prev];
+                        newHeights[index] = height;
+                        return newHeights;
+                      });
+                    }}
                   >
                     {student.name}
                   </Text>
@@ -191,6 +200,7 @@ const BatchAttendanceSummary = () => {
                       index % 2 === 0
                         ? styles.tableRowEven
                         : styles.tableRowOdd,
+                      { height: rowHeights[index] },
                     ]}
                   >
                     {latestDates.map((date, i) => {
