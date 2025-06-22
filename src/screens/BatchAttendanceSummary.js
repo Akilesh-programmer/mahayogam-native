@@ -35,6 +35,7 @@ const BatchAttendanceSummary = () => {
   const stickyColWidth = wp(36);
   const screenWidth = wp(100);
   const [rowHeights, setRowHeights] = useState([]);
+  const [headerHeight, setHeaderHeight] = useState();
 
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -128,7 +129,12 @@ const BatchAttendanceSummary = () => {
                 style={[
                   styles.tableRow,
                   styles.tableHeaderRow,
-                  { minWidth: wp(36), position: "relative", zIndex: 3 },
+                  {
+                    minWidth: wp(36),
+                    position: "relative",
+                    zIndex: 3,
+                    height: headerHeight,
+                  },
                 ]}
               >
                 <Text
@@ -137,6 +143,10 @@ const BatchAttendanceSummary = () => {
                     styles.firstColHeader,
                     styles.stickyHeaderCell,
                   ]}
+                  onLayout={(event) => {
+                    const { height } = event.nativeEvent.layout;
+                    setHeaderHeight(height);
+                  }}
                 >
                   Student Name
                 </Text>
@@ -184,7 +194,13 @@ const BatchAttendanceSummary = () => {
             >
               <View>
                 {/* Header row for dates, NO placeholder cell */}
-                <View style={[styles.tableRow, styles.tableHeaderRow]}>
+                <View
+                  style={[
+                    styles.tableRow,
+                    styles.tableHeaderRow,
+                    { height: headerHeight },
+                  ]}
+                >
                   {latestDates.map((date, i) => (
                     <Text key={date + "-" + i} style={styles.tableHeaderCell}>
                       {new Date(date).toLocaleDateString()}
